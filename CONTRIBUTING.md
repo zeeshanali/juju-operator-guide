@@ -59,7 +59,7 @@ juju add-model dev
 juju model-config logging-config="<root>=INFO;unit=DEBUG"
 # Deploy the charm
 juju deploy ./template-operator_ubuntu-20.04-amd64.charm \
-    --resource httpbin-image=kennethreitz/httpbin \
+    --resource nginx-image=kennethreitz/nginx \
 ```
 
 ## Canonical Contributor Agreement

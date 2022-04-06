@@ -3,21 +3,21 @@
 
 # For a complete list of supported options, see:
 # https://juju.is/docs/sdk/metadata-reference
-name: template-operator
+name: taskob
 description: |
-  TEMPLATE-TODO: fill out the charm's description
+  This charm will simply test charm 
 summary: |
-  TEMPLATE-TODO: fill out the charm's summary
+  This is a test charm for testing
 
 # TEMPLATE-TODO: replace with containers for your workload (delete for non-k8s)
 containers:
-  httpbin:
-    resource: httpbin-image
+  webserver:
+    resource: nginx
 
 # TEMPLATE-TODO: each container defined above must specify an oci-image resource
 resources:
-  httpbin-image:
+  nginx:
     type: oci-image
-    description: OCI image for httpbin (kennethreitz/httpbin)
+    description: OCI image for nginx
     # Included for simplicity in integration tests
-    upstream-source: kennethreitz/httpbin
+    upstream-source: nginx
