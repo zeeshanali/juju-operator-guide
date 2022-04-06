@@ -29,12 +29,12 @@ class OperatorTemplateCharm(CharmBase):
 
     def __init__(self, *args):
         super().__init__(*args)
-        self.framework.observe(self.on.nginx_pebble_ready, self._on_nginx_pebble_ready)
+        self.framework.observe(self.on.webserver_pebble_ready, self._on_webserver_pebble_ready)
         self.framework.observe(self.on.config_changed, self._on_config_changed)
         self.framework.observe(self.on.fortune_action, self._on_fortune_action)
         self._stored.set_default(things=[])
 
-    def _on_nginx_pebble_ready(self, event):
+    def _on_webserver_pebble_ready(self, event):
         """Define and start a workload using the Pebble API.
 
         TEMPLATE-TODO: change this example to suit your needs.
@@ -48,12 +48,12 @@ class OperatorTemplateCharm(CharmBase):
         container = event.workload
         # Define an initial Pebble layer configuration
         pebble_layer = {
-            "summary": "nginx layer",
-            "description": "pebble config layer for nginx",
+            "summary": "webserver layer",
+            "description": "pebble config layer for webserver",
             "services": {
-                "nginx": {
+                "webserver": {
                     "override": "replace",
-                    "summary": "nginx",
+                    "summary": "webserver",
                     "command": "nginx",
                     "startup": "enabled",
                     "environment": {"thing": self.model.config["thing"]},
@@ -61,7 +61,7 @@ class OperatorTemplateCharm(CharmBase):
             },
         }
         # Add initial Pebble config layer using the Pebble API
-        container.add_layer("nginx", pebble_layer, combine=True)
+        container.add_layer("webserver", pebble_layer, combine=True)
         # Autostart any services that were defined with startup: enabled
         container.autostart()
         # Learn more about statuses in the SDK docs:
