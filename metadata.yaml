@@ -12,11 +12,11 @@ summary: |
 # TEMPLATE-TODO: replace with containers for your workload (delete for non-k8s)
 containers:
   webserver:
-    resource: bitnami/nginx
+    resource: bitnami_nginx
 
 # TEMPLATE-TODO: each container defined above must specify an oci-image resource
 resources:
-  bitnami/nginx:
+  bitnami_nginx:
     type: oci-image
     description: OCI image for bitnami/nginx
     # Included for simplicity in integration tests
