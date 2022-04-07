@@ -72,7 +72,7 @@ class OperatorTemplateCharm(CharmBase):
                 "webserver": {
                     "override": "replace",
                     "summary": "webserver",
-                    "command": "nginx",
+                    "command": "/usr/sbin/nginx",
                     "startup": "enabled",
                     "environment": {"thing": self.model.config["thing"]},
                 }
